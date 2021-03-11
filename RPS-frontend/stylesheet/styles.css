@@ -87,3 +87,16 @@ header > h1 {
   font-weight: bold;
   font-size: 30px;
 }
+
+.leaderboard{
+  width: 400px;
+  height: 300px;
+  margin: 100px auto 0;
+  background: violet;
+  border-radius: 5px;
+  padding: 25px 40px;
+  position: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
