@@ -92,11 +92,14 @@ header > h1 {
   width: 400px;
   height: 300px;
   margin: 100px auto 0;
-  background: violet;
+  background: #00BFFF;
   border-radius: 5px;
   padding: 25px 40px;
   position: center;
   font-size: 18px;
   font-weight: bold;
+  text-align: center;
   cursor: pointer;
+  overflow: hidden;
+  overflow-y: scroll;
 }
