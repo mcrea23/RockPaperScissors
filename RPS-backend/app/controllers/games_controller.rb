@@ -1,50 +1,43 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
-
-  # GET /users
+class GamesController < ApplicationController
+  before_action :set_game, only: [:show, :update, :destroy]
+  # GET /games
   def index
-    @users = User.all
-
-    render json: @users
+    @games = Game.all
+    render json: @games
   end
-
-  # GET /users/1
+  # GET /games/1
   def show
-    render json: @user
+    game = Game.find(params[:id])
+    render json: @game
   end
-
-  # POST /users
+  # POST /games
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render json: @user, status: :created, location: @user
+    @game = Game.new(game_params)
+    if @game.save
+      render json: @game, status: :created, location: @game
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @game.errors, status: :unprocessable_entity
     end
   end
-
-  # PATCH/PUT /users/1
+  # PATCH/PUT /games/1
   def update
-    if @user.update(user_params)
-      render json: @user
+    if @game.update(game_params)
+      render json: @game
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @game.errors, status: :unprocessable_entity
     end
   end
-
-  # DELETE /users/1
+  # DELETE /games/1
   def destroy
-    @user.destroy
+    @game.destroy
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
+    def set_game
+      @game = Game.find(params[:id])
     end
-
     # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name)
+    def game_params
+      params.require(:game).permit(:user_id, :score)
     end
 end

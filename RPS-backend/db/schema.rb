@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_223127) do
-
-  create_table "computers", force: :cascade do |t|
-    t.integer "game_round_wins"
-    t.string "guess"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2021_03_18_170924) do
 
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
