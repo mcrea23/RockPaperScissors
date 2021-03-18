@@ -12,7 +12,7 @@ const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const game_div = document.getElementById("game");
 window.addEventListener('DOMContentLoaded', (event) => {
-  // Game.renderForm()
+  Game.renderForm()
   Game.addButtonFunctionality()
 });
 /*Dom Variables Element span tag */
