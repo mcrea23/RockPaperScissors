@@ -45,26 +45,33 @@
     form.innerHTML = ""
   }
 
-  static putScoresOnDom(score){
-    let div = document.createElement("div")
+   static putScoresOnDom(score){
+     console.log("score:", score)
+     console.log("this:", this)
+    // let div = document.createElement("div")
     let li = document.createElement("li")
-    let p = document.createElement("h3")
+    li.innerText = `${score.user.name}: ${score.score}` 
     let btn = document.createElement("button")
-  
-    if(score.score === 1){
-      p.innerText = `${score.user.name}: ${score.score} pt`
-    }
-    else{
-      p.innerText = `${score.user.name}: ${score.score} pts`
-    }
-   
     btn.innerText = "Delete Score"
-    btn.id = score.id
-    btn.addEventListener("click", Game.deleteScore)
+    li.appendChild(btn)
+    game_div.appendChild(li)
+
+  //   let p = document.createElement("h3")
   
-    li.append(p, btn)
-    div.append(li)
-    game_div.append(div)
+  //   if(score.score === 1){
+  //     p.innerText = `${score.user.name}: ${score.score} pt`
+  //   }
+  //   else{
+  //     p.innerText = `${score.user.name}: ${score.score} pts`
+  //   }
+   
+  //   btn.innerText = "Delete Score"
+  //   btn.id = score.id
+  //   btn.addEventListener("click", Game.deleteScore)
+  
+  //   li.append(p, btn)
+  //   div.append(li)
+  //   game_div.append(div)
   }
 
   /** requests to the backend */
@@ -77,8 +84,9 @@
         data.forEach(score => {
 
           Game.create(score)
+          Game.putScoresOnDom(score)
         });
-        Game.renderScores()
+        // Game.renderScores()
       });
   }
 
@@ -129,7 +137,7 @@ static renderForm = () => {
     <input type="submit" value="Start Game" />
   </form>
   `
-  game_div.innerHTML = form
+  user_div.innerHTML = form
 }
 
 static addButtonFunctionality = () => {

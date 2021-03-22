@@ -11,9 +11,11 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const game_div = document.getElementById("game");
+const user_div = document.getElementById("user");
 window.addEventListener('DOMContentLoaded', (event) => {
   Game.renderForm()
   Game.addButtonFunctionality()
+  Game.fetchScores()
 });
 /*Dom Variables Element span tag */
 function getComputerChoice() {

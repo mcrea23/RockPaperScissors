@@ -88,6 +88,23 @@ header > h1 {
   font-size: 30px;
 }
 
+.user{
+  width: 400px;
+  height: 150px;
+  margin: 100px auto 0;
+  background: pink;
+  border-radius: 5px;
+  padding: 25px 40px;
+  position: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+
 .game{
   width: 400px;
   height: 300px;
