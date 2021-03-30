@@ -19,7 +19,7 @@
   }
 
   static clearScores(){
-    game_div.innerHTML = ""
+  document.getElementById("scores").innerHTML = ""
   }
 
   static renderScores(){
@@ -46,32 +46,15 @@
   }
 
    static putScoresOnDom(score){
-     console.log("score:", score)
-     console.log("this:", this)
-    // let div = document.createElement("div")
     let li = document.createElement("li")
     li.innerText = `${score.user.name}: ${score.score}` 
     let btn = document.createElement("button")
-    btn.innerText = "Delete Score"
+    btn.innerText =  "Delete Score"
     li.appendChild(btn)
-    game_div.appendChild(li)
-
-  //   let p = document.createElement("h3")
+    document.getElementById("scores").appendChild(li)
+    btn.id = score.id
+    btn.addEventListener("click", Game.deleteScore)
   
-  //   if(score.score === 1){
-  //     p.innerText = `${score.user.name}: ${score.score} pt`
-  //   }
-  //   else{
-  //     p.innerText = `${score.user.name}: ${score.score} pts`
-  //   }
-   
-  //   btn.innerText = "Delete Score"
-  //   btn.id = score.id
-  //   btn.addEventListener("click", Game.deleteScore)
-  
-  //   li.append(p, btn)
-  //   div.append(li)
-  //   game_div.append(div)
   }
 
   /** requests to the backend */
@@ -81,23 +64,23 @@
     Game.clearScores()
     fetch(baseUrl + "/games").then(response => response.json())
       .then(data => {
+        console.log(data)
         data.forEach(score => {
-
           Game.create(score)
-          Game.putScoresOnDom(score)
+          // Game.putScoresOnDom(score)
         });
-        // Game.renderScores()
+        Game.renderScores()
       });
   }
 
   static submitScore = (e) => {
     let params = {
-      "score": score,
+      "score": document.getElementById("user-score").innerHTML,
           "user": {
-            "name": userName
+            "name": nameInput().value
           }
       }
-  
+
     fetch(baseUrl + "/games", {
       headers: {
         "Accept": "application/json",
@@ -107,7 +90,8 @@
       method: "POST"})
       .then(resp => resp.json())
       .then(() => { 
-        Game.fetchScores();
+        Game.fetchScores()
+        nameInput().value = "";
       })
   }
 
@@ -134,7 +118,7 @@ static renderForm = () => {
       <input type="text" name="name" id="name"/>
     </div>
     <br>
-    <input type="submit" value="Start Game" />
+    <input type="submit" value="Submit Score!" />
   </form>
   `
   user_div.innerHTML = form
@@ -147,8 +131,9 @@ static addButtonFunctionality = () => {
     if(userName === ""){
       alert("Please enter a name")
     }
-    else {
-      submitScore()
+    else { 
+      e.preventDefault()
+      Game.submitScore()
     }
   })
 }

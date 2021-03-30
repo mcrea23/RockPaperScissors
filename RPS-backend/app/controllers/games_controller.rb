@@ -12,7 +12,8 @@ class GamesController < ApplicationController
   end
   # POST /games
   def create
-    @game = Game.new(game_params)
+    user = User.find_or_create_by(:name => params[:user][:name])
+    @game = user.games.build(:score => params[:score])
     if @game.save
       render json: @game, status: :created, location: @game
     else
@@ -30,7 +31,9 @@ class GamesController < ApplicationController
   # DELETE /games/1
   def destroy
     @game.destroy
+    render json: @game
   end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
@@ -38,6 +41,6 @@ class GamesController < ApplicationController
     end
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:user_id, :score)
+      params.require(:game).permit(:score)
     end
 end

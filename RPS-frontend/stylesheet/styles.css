@@ -101,7 +101,6 @@ header > h1 {
   text-align: center;
   cursor: pointer;
   overflow: hidden;
-  overflow-y: scroll;
 }
 
 
