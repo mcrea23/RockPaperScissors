@@ -95,6 +95,49 @@ header > h1 {
   background: #FFFACD;
 }
 
+#result
+{
+  height: auto;
+  width: 100%;
+  position: absolute;
+  bottom: 10%;
+  display: flex;
+  justify-content: center;
+}
+#result #userScore, #roboScore
+{
+  height: 150px;
+  width: 100px;
+}
+
+#result #userScore i, #roboScore i
+{
+  height: 100px;
+  width: 100px;
+  background: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  color: black;
+}
+
+#result #userScore h3, #roboScore h3
+{
+  text-align: center;
+  margin: 10px;
+  font-size: 30px;
+  color: black;
+}
+#result #resultText
+{
+  height: 150px;
+  width: 200px;
+  font-size: 30px;
+  color: black;
+  display: grid;
+  place-items: center;  
+}
 #action-message {
   text-align: center;
   color: white;
