@@ -140,3 +140,4 @@ let submitScore = (e) => {
       Game.fetchScores();
     })
 }
+}

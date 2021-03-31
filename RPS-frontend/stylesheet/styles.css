@@ -7,8 +7,22 @@
 }
 
 body {
-  background-color: #696969;
   font-family: Asap, sans-serif;
+  background-image: linear-gradient(
+    to bottom,
+    #ffd3bf,
+    #ffc6b7,
+    #ffb9b3,
+    #ffacb3,
+    #ffa0b6,
+    #ff97b9,
+    #ff8ebd,
+    #ff85c4,
+    #ff7cc8,
+    #ff72ce,
+    #ff69d4,
+    #fd60db
+  );
 }
 
 header {
