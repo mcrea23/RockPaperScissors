@@ -104,13 +104,13 @@ header > h1 {
   display: flex;
   justify-content: center;
 }
-#result #userScore, #roboScore
+#result #userResult,#roboResult
 {
   height: 150px;
   width: 100px;
 }
 
-#result #userScore i, #roboScore i
+#result #userResult i,#roboResult i
 {
   height: 100px;
   width: 100px;
@@ -122,7 +122,7 @@ header > h1 {
   color: black;
 }
 
-#result #userScore h3, #roboScore h3
+#result #userResult h2,#roboResult h2
 {
   text-align: center;
   margin: 10px;
@@ -138,12 +138,12 @@ header > h1 {
   display: grid;
   place-items: center;  
 }
-#action-message {
+/* #action-message {
   text-align: center;
   color: white;
   font-weight: bold;
   font-size: 30px;
-}
+} */
 
 .user{
   width: 400px;

@@ -112,7 +112,7 @@
   }
 
 static renderForm = () => {
-  let form = `<h2>Enter Your Name</h2>
+  let form = `<h3>Enter Your Name</h3>
   <form id="form">
     <div class="input-field">
       <input type="text" name="name" id="name"/>
