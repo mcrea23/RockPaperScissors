@@ -1,5 +1,8 @@
 const baseUrl = "http://localhost:3000"
 let userName = ""
+const nameInput = () => document.getElementById("name")
+const userScore_span = document.getElementById("user-score");
+const roboScore_span = document.getElementById("robo-score");
 let userScore = document.querySelector("userScore");
 let roboScore = document.querySelector("RoboScore");
 
@@ -13,78 +16,102 @@ const rock_div = document.getElementById("0");
 const paper_div = document.getElementById("1");
 const scissors_div = document.getElementById("2");
 
+const randomNumber = Math.floor(Math.random() * 3);
+const scoreBoard_div = document.querySelector(".score-board");
+const game_div = document.getElementById("game");
+const user_div = document.getElementById("user");
+
+
 window.addEventListener('DOMContentLoaded', (event) => {
     Game.renderForm()
     Game.addButtonFunctionality()
     Game.fetchScores()
   });
 
+let convertToWord = (n) => { if (n === "0") return 'Rock'; if (n === '1') return 'Paper' ; return 'Scissors' }
+
+
 let userWin = 0;
 let roboWin = 0;
 
-// if (userChoice ==0 && roboChoice ===0 ){
-//     if (roboChoice === 0) {
-//         console.log("draw")
-//     } else if (roboChoice === 1) {
-//         console.log("loose")
-//     } else if (roboChoice === 2) {
-//         console.log("win")
-//     }
-// } else if (userChoice ==1){
-//     if (roboChoice === 0) {
-//         console.log("win")
-//     } else if (roboChoice === 1) {
-//         console.log("draw")
-//     } else if (roboChoice === 2) {
-//         console.log("loose")
-//     }
-// } else if (userChoice ==2){
-//     if (roboChoice === 0) {
-//         console.log("loose")
-//     } else if (roboChoice === 1) {
-//         console.log("win")
-//     } else if (roboChoice === 2) {
-//         console.log("draw")
-//     }
-// }
-const rock_div = document.getElementById("0")
-rock_div.addEventListener("click", this.chooseRock())
+function getRoboChoice() {
+    const choices = ['0','1','2'];
+    const randomNumber = Math.floor(Math.random() * 3);
+    return choices[randomNumber];
+  }
 
 function chooseRock () {
     console.log("0")
 }
 
-const paper_div = document.getElementById("1")
-paper_div.addEventListener("click", choosePaper)
+
 
 function choosePaper () {
     console.log("1")
 }
 
-const scissors_div = document.getElementById("2")
-scissors_div.addEventListener("click", chooseScissors)
+
 
 function chooseScissors () {
-    runsLogic(2)
-}
+    console.log("2")}
 
 function runsLogic(choice){
     // your if statements here
 }
 
+function game(userChoice) {
+    const roboChoice = getRoboChoice();
+    switch (userChoice + roboChoice) {
+      case "02":
+      case "10":
+      case "21":
+          console.log("wintest")
+        // win(userChoice, roboChoice);
+        break;
+      case "01":
+      case "12":
+      case "20":
+        lose(userChoice, roboChoice);
+        break;
+      case "00":
+      case "11":
+      case "22":
+        draw(userChoice, roboChoice);
+        break;
+    }
+  }
+  // r = 0  p= 1 s= 2
 function main() {
     rock_div.addEventListener('click', function() {
-        game("r");
+        game("0");
     })
     paper_div.addEventListener('click', function() {
-        game("p");
+        game("1");
     })
     scissors_div.addEventListener('click', function() {
-        game("s");
+        game("2");
     })
-  }
-  main();
-  
+}
+main();
+
+let submitScore = (e) => {
+    let params = {
+            "name": userName
+            }
+    fetch(baseUrl + "/users", {
+        headers: {
+        "Accept": "application/json",
+        "Content-type": "application/json",
+        },
+        body: JSON.stringify(params),
+        method: "POST"})
+        .then(resp => resp.json())
+        .then(() => {
+        Game.fetchScores();
+
+
+    })
+}
 
 // choices.forEach( (choose, userChoose) => {
 //     choose.addEventListener("click", () => {
@@ -132,24 +159,6 @@ function main() {
 //         userScore.innerHTML = userWin;
 //         roboScore.innerHTML = Win;
 
-// let submitScore = (e) => {
-//     let params = {
-//             "name": userName
-//             }
-//     fetch(baseUrl + "/users", {
-//         headers: {
-//         "Accept": "application/json",
-//         "Content-type": "application/json",
-//         },
-//         body: JSON.stringify(params),
-//         method: "POST"})
-//         .then(resp => resp.json())
-//         .then(() => {
-//         Game.fetchScores();
-
-
-//     })
-// })
         
 
 
