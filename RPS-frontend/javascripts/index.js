@@ -7,16 +7,19 @@ let userScore = document.querySelector("userScore");
 let roboScore = document.querySelector("RoboScore");
 
 let choice = document.querySelector(".choice");
-
-let userResult = document.querySelector("userResult");
-let resultText = document.querySelector("resultText");
-let roboResult = document.querySelector("roboResult");
+ 
+let userResult = document.getElementById("userResult");
+let resultText = document.getElementById("resultText");
+let roboResult = document.getElementById("roboResult");
 
 const rock_div = document.getElementById("0");
 const paper_div = document.getElementById("1");
 const scissors_div = document.getElementById("2");
 
-const randomNumber = Math.floor(Math.random() * 3);
+const rockIcon = "<i class='fas fa-hand-rock fa-10x'></i>";
+const paperIcon = "<i class='fas fa-hand-paper fa-10x'></i>";
+const scissorIcon = "<i class='fas fa-hand-scissors fa-10x'></i>";
+
 const scoreBoard_div = document.querySelector(".score-board");
 const game_div = document.getElementById("game");
 const user_div = document.getElementById("user");
@@ -28,11 +31,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     Game.fetchScores()
   });
 
-let convertToWord = (n) => { if (n === "0") return 'Rock'; if (n === '1') return 'Paper' ; return 'Scissors' }
-
-
-let userWin = 0;
-let roboWin = 0;
+let convertToIcon = (n) => { if (n === "0") return rockIcon; if (n === '1') return paperIcon ; return scissorIcon }
 
 function getRoboChoice() {
     const choices = ['0','1','2'];
@@ -40,24 +39,28 @@ function getRoboChoice() {
     return choices[randomNumber];
   }
 
-function chooseRock () {
-    console.log("0")
-}
-
-
-
-function choosePaper () {
-    console.log("1")
-}
-
-
-
-function chooseScissors () {
-    console.log("2")}
-
-function runsLogic(choice){
-    // your if statements here
-}
+  function win(userChoice, roboChoice) {
+    userScore++;
+    userScore_span.innerHTML = userScore = (userScore > 0) ? userScore++ : 0;
+    roboScore_span.innerHTML = roboScore = (roboScore > 0) ? roboScore++ : 0;;
+    userResult.innerHTML = convertToIcon(userChoice);
+    roboResult.innerHTML = convertToIcon(roboChoice);
+    resultText.innerHTML = "win"
+  }
+  function lose(userChoice, roboChoice) {
+    roboScore++;
+    userScore_span.innerHTML = userScore = (userScore > 0) ? userScore++ : 0;
+    roboScore_span.innerHTML = roboScore = (roboScore > 0) ? roboScore++ : 0;;
+    userResult.innerHTML = convertToIcon(userChoice);
+    roboResult.innerHTML = convertToIcon(roboChoice);
+    resultText.innerHTML = "loses";
+  }
+  function draw(userChoice, roboChoice) {
+    userResult.innerHTML = convertToIcon(userChoice);
+    roboResult.innerHTML = convertToIcon(roboChoice);
+    resultText.innerHTML = "DRAW"
+  }
+  
 
 function game(userChoice) {
     const roboChoice = getRoboChoice();
@@ -65,8 +68,7 @@ function game(userChoice) {
       case "02":
       case "10":
       case "21":
-          console.log("wintest")
-        // win(userChoice, roboChoice);
+        win(userChoice, roboChoice);
         break;
       case "01":
       case "12":
