@@ -99,7 +99,7 @@ header > h1 {
 {
   height: auto;
   width: 100%;
-  position: absolute;
+  position: top;
   bottom: 10%;
   display: flex;
   justify-content: center;
