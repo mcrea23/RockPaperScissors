@@ -32,8 +32,8 @@
   }
 
   static updateScores(){
-    Game.clearScores()
-    Game.renderScores()
+    this.clearScores()
+    this.renderScores()
   }
 
   static renderGameScore(){
@@ -47,27 +47,27 @@
 
    static putScoresOnDom(score){
     let li = document.createElement("li")
-    li.innerText = `${score.user.name}: ${score.score}` 
+    li.innerText = `${score.user.name}: ${score.score}`
     let btn = document.createElement("button")
     btn.innerText =  "Delete Score"
     li.appendChild(btn)
     document.getElementById("scores").appendChild(li)
     btn.id = score.id
     btn.addEventListener("click", Game.deleteScore)
-  
+
   }
+
 
   /** requests to the backend */
 
   static fetchScores = () => {
     Game.all = []
     Game.clearScores()
-    fetch(baseUrl + "/games").then(response => response.json())
+    fetch(baseUrl + "/games")
+      .then(response => response.json())
       .then(data => {
-        console.log(data)
         data.forEach(score => {
           Game.create(score)
-          // Game.putScoresOnDom(score)
         });
         Game.renderScores()
       });
@@ -89,11 +89,13 @@
       body: JSON.stringify(params),
       method: "POST"})
       .then(resp => resp.json())
-      .then(() => { 
-        Game.fetchScores()
+      .then(data => { 
+        Game.create(data)
+        Game.clearScores()
+        Game.renderScores()
         nameInput().value = "";
-      })
-  }
+  })
+}
 
   static deleteScore = (e) => {
     
@@ -128,13 +130,14 @@ static addButtonFunctionality = () => {
   let button = document.getElementById("form").children[2]
   button.addEventListener("click", function(e) {
     userName = nameInput().value
+    e.preventDefault()
     if(userName === ""){
       alert("Please enter a name")
     }
     else { 
-      e.preventDefault()
       Game.submitScore()
     }
   })
 }
 }
+

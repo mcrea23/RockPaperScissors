@@ -15,7 +15,8 @@ class GamesController < ApplicationController
     user = User.find_or_create_by(:name => params[:user][:name])
     @game = user.games.build(:score => params[:score])
     if @game.save
-      render json: @game, status: :created, location: @game
+      render json: @game, status: :created, location: @game, include: [:user]
+
     else
       render json: @game.errors, status: :unprocessable_entity
     end

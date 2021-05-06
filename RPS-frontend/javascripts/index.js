@@ -1,4 +1,3 @@
-
 window.addEventListener('DOMContentLoaded', (event) => {
     Game.renderForm()
     Game.addButtonFunctionality()
@@ -57,6 +56,7 @@ function game(userChoice) {
     }
   }
   // r = 0  p= 1 s= 2
+
 function main() {
     rock_div.addEventListener('click', function() {
         game("0");
@@ -88,55 +88,6 @@ let submitScore = (e) => {
 
     })
 }
-
-// choices.forEach( (choose, userChoose) => {
-//     choose.addEventListener("click", () => {
-//         userResult.innerHTML = '${choose.innerHTML}
-//             <h2>User</h2>';
-        
-//         let roboChoose = Math.floor(Math.random() * 3);
-//         console.log(roboChoose);
-
-//         if(roboChoose === 0){
-//             roboResult.innerHTML = '<i class="fas fa-hand-rock fa-10x"></i>
-//             <h2> Robo </h2>';
-//         }
-//         else if(roboChoose === 1){
-//             roboResult.innerHTML = '<i class="fas fa-hand-paper fa-10x"></i>
-//             <h2>Robo</h2>';
-//         }
-//         else if(roboChoose === 2){
-//             roboResult.innerHTML = '<i class="fas fa-hand-scissors fa-10x"></i>
-//             <h2>Robo</h2>';
-//         }
-//         //Robo WINS
-//         if(userChoose === roboChoose){
-//             resultText.innerText = 'Draw';
-//         }
-//         else if(userChoose === 0 && roboChoose === 1){
-//             roboScore ++;
-//             resultText.innerHTML = "Loss";
-//         }
-//         else if(userChoose === 1 && roboChoose === 2){
-//             roboScore ++;
-//             resultText.innerHTML = "Loss";
-//         }        
-//         else if(userChoose === 2 && roboChoose === 3){
-//             roboScore ++;
-//             resultText.innerHTML = "Loss";
-//         }
-
-//         //User WINS
-        
-//         else{
-//             userScore ++;
-//             resultText.innerHTML = "Win";
-//         }
-//         userScore.innerHTML = userWin;
-//         roboScore.innerHTML = Win;
-
-        
-
 
 
 

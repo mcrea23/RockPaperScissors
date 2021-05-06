@@ -23,3 +23,4 @@ const scissorIcon = "<i class='fas fa-hand-scissors fa-10x'></i>";
 const scoreBoard_div = document.querySelector(".score-board");
 const game_div = document.getElementById("game");
 const user_div = document.getElementById("user");
+
